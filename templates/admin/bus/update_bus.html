@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+</head>
+<body>
+   
+    <form method="POST">
+        {% csrf_token %}
+        
+        <fieldset>
+            <legend>Update Bus</legend>
+            <table align="center">
+                <tr>
+                    <td><label for="name">Name :</label></td>
+                    <td><input type="text" name="name" id="name" value="{{ bus.name }}"></td>
+                </tr>
+                <tr>
+                    <td><label for="source">Source :</label></td>
+                    <td><input type="text" name="source" id="source" value="{{ bus.source }}"></td>
+                </tr>
+                <tr>
+                    <td><label for="destination">Destination :</label></td>
+                    <td><input type="text" name="destination" id="destination" value="{{ bus.destination }}"></td>
+                </tr>
+                <tr>
+                    <td><label for="num_of_seats">Number of Seats :</label></td>
+                    <td><input type="number" name="num_of_seats" id="num_of_seats" value="{{ bus.num_of_seats }}"></td>
+                </tr>
+                <tr>
+                    <td><label for="num_of_seats_rem">Number of Seats Remaining :</label></td>
+                    <td><input type="number" name="num_of_seats_rem" id="num_of_seats_rem" value="{{ bus.num_of_seats_rem }}"></td>
+                </tr>
+                <tr>
+                    <td><label for="price">Price :</label></td>
+                    <td><input type="number" name="price" id="price" value="{{ bus.price }}"></td>
+                </tr>
+                <tr>
+                    <td><label for="date">Date :</label></td>
+                    <td><input type="date" name="date" id="date" value="{{ bus.date }}"></td>
+                </tr>
+                <tr>
+                    <td><label for="time">Time :</label></td>
+                    <td><input type="time" name="time" id="time" value="{{ bus.time }}"></td>
+                </tr>
+                
+                <tr>
+                    <td><input type="submit" value="Submit"></td>
+                </tr>
+            </table>
+        </fieldset>
+        <center>
+            <button><a href="/admins/bus/view">See all Buses</a></button>
+        </center>
+    </form>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Password</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <div>
+        <p>Update Password</p>
+        <p id="error_msg">{{ error }}</p>
+        <form method="post">
+            {% csrf_token %}
+            <table>
+                <tr id="label"><td><label for="otp">OTP:</label></td></tr>
+                <tr id="text-input"><td><input type="text" name="otp" id="otp" placeholder=""></td></tr>
+                <tr id="label"><td><label for="password">New Password:</label></td></tr>
+                <tr id="text-input"><td><input type="password" name="password" id="password" placeholder="*********"></td></tr>
+                <tr id="label"><td><label for="confpass">Confirm Password:</label></td></tr>
+                <tr id="text-input"><td><input type="password" name="confpass" id="confpass" placeholder="*********"></td></tr>
+                <tr><td><hr color="black"/></td></tr>
+                <tr id="text-input"><td><input id="login" type="submit" value="Change Password"></td></tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

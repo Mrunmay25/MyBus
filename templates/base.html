@@ -1,0 +1,109 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyBus</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .navbar {
+        margin-bottom: 20px;
+      }
+      .footer {
+        background-color: #343a40;
+        color: white;
+        padding: 20px 0;
+        width: 100%;
+        position: relative;
+        bottom: 0;
+      }
+      .banner {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        height: 500px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      }
+      .banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        opacity: 0.8; /* Adjust opacity for better text readability */
+      }
+      .banner h1 {
+        font-size: 3rem;
+        z-index: 1;
+      }
+      .features img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .rounded-circle {
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'home/navbar.html' %}
+
+    {% if user.is_authenticated %} 
+    <div class="container mt-5">
+      <div class="row">
+          <div class="col text-center">
+              <h2>Easy and Convenient Bus Ticket Booking</h2>
+              <p class="lead">Book your bus tickets with ease using MyBus. Select your seat, confirm your booking, and enjoy your journey!</p>
+          </div>
+      </div>
+  
+      <div class="row mt-4">
+          <div class="col-md-4 text-center features">
+              <img src="https://www.shutterstock.com/image-vector/vector-design-red-tour-bus-600nw-2307287049.jpg" class="img-fluid rounded-circle" alt="Feature 1">
+              <h3 class="mt-3">Feature 1</h3>
+              <p>Experience a seamless booking process with our user-friendly interface.</p>
+          </div>
+          <div class="col-md-4 text-center features">
+              <img src="https://media.istockphoto.com/id/1135513048/vector/front-view-of-city-bus.jpg?s=612x612&w=0&k=20&c=k6kpFxzp5bLPwPbqugQlfCcJgt5zK-FD14I-K5q0bQ0=" class="img-fluid rounded-circle" alt="Feature 2">
+              <h3 class="mt-3">Feature 2</h3>
+              <p>Choose your preferred seat and enjoy a comfortable journey.</p>
+          </div>
+          <div class="col-md-4 text-center features">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWc0hpP2iiPP-SQ3VcfJ7zbxIMVMNNNDqpJw&s" class="img-fluid rounded-circle" alt="Feature 3">
+              <h3 class="mt-3">Feature 3</h3>
+              <p>Get real-time updates and notifications about your booking status.</p>
+          </div>
+      </div>
+    </div>  
+    {% else %}
+    <div class="banner">
+      <img src="{% static 'images/img.jpg' %}" alt="Bus Station">
+      <h1>Welcome to MyBus</h1>
+    </div>
+    {% endif %}
+    {% block bodycontent %}
+    {% endblock bodycontent %}
+
+    <!-- Footer -->
+    <div class="footer text-center">
+      <p>&copy; 2024 MyBus. All Rights Reserved.</p>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>

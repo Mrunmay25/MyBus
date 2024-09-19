@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Booking Confirmation</h2>
+<form action="" method="POST">
+    {% csrf_token %}
+    <h2>Your booking has been confirmed!</h2>
+    <h2>Thank you!</h2>
+    <h3>Bill details</h3>
+    <div class="container">
+        <div class="row">
+            {% for book in books %}
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>Bus name:</b> {{ book.bus_name }}</li>
+                <li class="list-group-item"><b>Starting point:</b> {{ book.source }}</li>
+                <li class="list-group-item"><b>Destination point:</b> {{ book.destination }}</li>
+                <li class="list-group-item"><b>Number of seats:</b> {{ book.num_of_seats }}</li>
+                <li class="list-group-item"><b>Price:</b> {{book.price}}</li>
+                <!-- <li class="list-group-item"><b>Cost:</b> {{ cost }}</li> -->
+                <li class="list-group-item"><b>Date:</b> {{ book.date }}</li>
+                <li class="list-group-item"><b>Time:</b> {{ book.time }}</li>
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+    <button type="button" class="btn btn-success" >
+        Bill details  
+    </button>
+    <div class="pull-right">
+        <button type="submit" class="btn btn-primary float-right">OK</button>
+    </div>
+</form>
+{% endblock %}

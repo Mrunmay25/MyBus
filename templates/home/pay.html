@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Payment</title>
+</head>
+<body>
+   <button id="rzp-button1">Pay with Razorpay</button>
+   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+   <script>
+      var options = {
+         "key": "rzp_test_pvABMx4GHcVJ0U",  // Replace with your Razorpay public key
+         "amount": "{{ amount }}",
+         "currency": "{{ currency }}",
+         "name": "Mrunmay Company",
+         "description": "Test Transaction",
+         "order_id": "{{ id }}",  // Use the order ID passed from the view
+         "handler": function (response) {
+            alert('Payment successful');
+            window.location.href = "{% url 'mybus' %}";
+            // Handle successful payment
+         },
+         "prefill": {
+            "name": "{{ request.user.first_name }} {{ request.user.last_name }}",
+            "email": "{{ request.user.email }}",
+            "contact": "{{ request.user.profile.contact }}"  // Assuming you have contact in user profile
+         },
+         "theme": {
+            "color": "#3399cc"
+         }
+      };
+      var rzp1 = new Razorpay(options);
+      rzp1.on('payment.failed', function (response) {
+         alert('Payment failed');
+         // Handle payment failure
+      });
+      document.getElementById('rzp-button1').onclick = function(e) {
+         rzp1.open();
+         e.preventDefault();
+      }
+   </script>
+</body>
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Payment</title>
+</head>
+<body>
+   <button id="rzp-button1">Pay with Razorpay</button>
+   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+   <script>
+      var options = {
+         "key": "YOUR_RAZORPAY_PUBLIC_KEY",
+         "amount": "{{ amount }}",
+         "currency": "{{ currency }}",
+         "name": "Pawar Company",
+         "description": "Test Transaction",
+         "order_id": "{{ order_id }}",
+         "handler": function (response) {
+            alert('Payment successful');
+            // Handle successful payment
+         },
+         "prefill": {
+            "name": "{{ request.user.first_name }} {{ request.user.last_name }}",
+            "email": "{{ request.user.email }}",
+            "contact": "{{ request.user.profile.contact }}"  // Assuming you have contact in user profile
+         },
+         "theme": {
+            "color": "#3399cc"
+         }
+      };
+      var rzp1 = new Razorpay(options);
+      rzp1.on('payment.failed', function (response) {
+         alert('Payment failed');
+         // Handle payment failure
+      });
+      document.getElementById('rzp-button1').onclick = function(e) {
+         rzp1.open();
+         e.preventDefault();
+      }
+   </script>
+</body>
+</html> -->

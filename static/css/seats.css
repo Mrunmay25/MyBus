@@ -1,0 +1,26 @@
+.seat {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #312828;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.booked {
+    background-color: #FF0000; /* Red color for booked seats */
+}
+
+.available {
+    background-color: #00FF00; /* Green color for available seats */
+}
+
+.selected {
+    background-color: #6c6; /* Light green color for selected seats */
+}
+
+.seat:hover {
+    background-color: #aaa; /* Gray color on hover */
+}
